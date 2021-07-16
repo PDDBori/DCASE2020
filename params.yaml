@@ -1,0 +1,74 @@
+model_root : ./model
+result_root : ./result
+dev_dir : ./dev_data
+eval_dir : ./eval_data
+log_dir: ./logs
+
+result_file: result.csv
+
+feature:
+  n_mels: 128
+  frames : 2
+  n_fft: 2048
+  hop_length: 512
+  power: 2.0
+
+# dev / eval
+mode : dev
+
+#  1: normalize / 0: not normalize
+normalize : 1
+
+# select train dataset (0: false, 1: true)
+dataset:
+  toycar: 0
+  toyconveyor: 1
+  fan: 0
+  pump: 0
+  slider: 0
+  valve: 0
+
+# server gpu 0 ~ 7
+gpu_num: 1
+
+# folder path
+model_dir: 2021-07-12 MTL
+result_dir: 2021-07-12 MTL
+
+# WaveNet parameters
+model:
+  input_size: 312
+  num_channel: 128
+  channel_multiply: 6
+  kernel_size: 3
+  num_blocks: 5
+
+# learning rate
+learning_rate:
+  model1: 0.0001
+  model2: 0.0001
+  model3: 0.0001
+
+data_aug:
+  label_mix: 1
+  data_change: 0
+
+  time_size: 64
+  hop: 32
+
+# train step
+fit:
+  compile:
+    optimizer: adam
+  epochs: 300
+  save_epoch: 10
+  batch_size: 32
+  shuffle: True
+
+# calculate pAUC
+max_fpr: 0.1
+
+
+
+
+
